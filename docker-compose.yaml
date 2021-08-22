@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8181:8181
+    volumes:
+      - .:/app
     depends_on:
       - bill_users_api_db
   bill_users_api_db:
