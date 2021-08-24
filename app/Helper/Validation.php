@@ -123,4 +123,11 @@ class Validation{
         return $content;
     }
 
+    public static function validateQueueHandleData($event){
+
+        $eventPayload = json_decode(json_encode($event));
+        return isset($eventPayload->payload) ? $eventPayload->payload : null;
+
+    }
+
 }
