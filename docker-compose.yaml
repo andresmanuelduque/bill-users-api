@@ -6,8 +6,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8181:8181
+    volumes:
+      - .:/app
     depends_on:
       - bill_users_api_db
+    networks:
+      - bill-network
   bill_users_api_db:
     image: mysql:5.7.22
     environment:
@@ -19,3 +23,8 @@ services:
       - ./storage/dbdata:/var/lib/mysql
     ports:
       - 33070:3306
+    networks:
+      - bill-network
+networks:
+  bill-network:
+    external: true
